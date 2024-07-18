@@ -86,6 +86,14 @@
         .donate-button:hover {
             background-color: #e0a800;
         }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .highlight {
+            color: #ffc107; /* Цвет выделения */
+            font-weight: bold; /* Жирный шрифт */
+        }
     </style>
 </head>
 <body>
@@ -119,7 +127,7 @@
                 let hoursNeeded = remainingAmount / incomeHour;
                 let days = Math.floor(hoursNeeded / 24);
                 let hours = Math.floor(hoursNeeded % 24);
-                resultText = `При доходе ${incomeHour} монет в час и имеющейся сумме ${currentAmount} монет,<br>сумма в ${targetAmount} монет будет достигнута через<br>${days} дней ${hours} часов.`;
+                resultText = `При доходе ${incomeHour} монет в час и имеющейся сумме ${currentAmount} монет,<br>сумма в ${targetAmount} монет будет достигнута через<br><span class="highlight">${days} дней ${hours} часов</span>.`;
             } else {
                 resultText = 'Пожалуйста, введите доход в час и имеющуюся сумму для расчета.';
             }
