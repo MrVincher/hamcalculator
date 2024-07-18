@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор</title>
+    <title>Калькулятор достижения целевой суммы</title>
     <style>
         body {
             background: url('background.jpg') no-repeat center center fixed;
@@ -23,20 +23,20 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 600px; /* Уменьшил максимальную ширину */
-            width: 100%; /* Чтобы занимал всю доступную ширину */
-            margin: 0 auto; /* Центрирование по горизонтали */
-            box-sizing: border-box; /* Учитываем padding внутри */
-            position: relative; /* Добавил позиционирование для смахивания */
-            z-index: 1; /* Установил z-index для наложения */
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
         input {
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            width: calc(100% - 22px); /* Учитываем padding и border */
-            box-sizing: border-box; /* Учитываем padding внутри */
+            width: calc(100% - 22px);
+            box-sizing: border-box;
         }
         button {
             padding: 10px 20px;
@@ -45,7 +45,7 @@
             background-color: #28a745;
             color: white;
             cursor: pointer;
-            margin-top: 10px; /* Отступ сверху */
+            margin-top: 10px;
         }
         button:hover {
             background-color: #218838;
@@ -62,7 +62,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin-top: 10px; /* Отступ сверху */
+            margin-top: 10px;
         }
         .telegram-link:hover {
             background-color: #0056b3;
@@ -71,51 +71,6 @@
             font-size: 24px;
             margin-right: 10px;
             vertical-align: middle;
-        }
-
-        /* Анимация для скрытия формы */
-        @keyframes swipeUp {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(-100%);
-            }
-        }
-        .swipe-up {
-            animation: swipeUp 0.5s forwards;
-        }
-
-        /* Стили для раздела "Поделиться" */
-        .share-section {
-            margin-top: 20px;
-            text-align: center;
-            display: none; /* Скрыт по умолчанию */
-        }
-        .share-button {
-            display: inline-block;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-        }
-        .share-button:hover {
-            background-color: #0056b3;
-        }
-        .share-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .share-link {
-            text-decoration: none;
-            color: white;
-            font-size: 24px;
         }
         .donate-button {
             display: inline-block;
@@ -149,16 +104,6 @@
             <span class="hamster-emoji">🐹</span> HamsterKard
         </a>
 
-        <!-- Кнопка "Поделиться" -->
-        <button class="share-button" onclick="shareApp()">Поделиться</button>
-
-        <!-- Раздел "Поделиться" -->
-        <div class="share-section" id="share-section">
-            <p>Поделитесь калькулятором с друзьями:</p>
-            <!-- Здесь можно добавить дополнительные платформы для шаринга, если нужно -->
-            <button class="share-link" onclick="shareViaSystem()">Системное шаринг-меню</button>
-        </div>
-
         <!-- Кнопка "Донат" -->
         <button class="donate-button" onclick="donateYooMoney()">Поддержать проект</button>
     </div>
@@ -181,33 +126,12 @@
 
             let resultElement = document.getElementById("result");
             resultElement.innerHTML = `<strong>${resultText}</strong>`;
-            resultElement.classList.add('show'); // Добавляем класс для показа с анимацией
-        }
-
-        // Функция для отображения раздела "Поделиться"
-        function shareApp() {
-            let shareSection = document.getElementById('share-section');
-            shareSection.style.display = 'block';
-        }
-
-        // Функция для вызова системного шаринг-меню
-        function shareViaSystem() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Калькулятор достижения целевой суммы',
-                    text: 'Проверьте этот калькулятор достижения целевой суммы!',
-                    url: 'https://mrvincher.github.io/ham-calculator/'
-                })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error sharing:', error));
-            } else {
-                alert('Извините, ваш браузер не поддерживает системное шаринг-меню.');
-            }
+            resultElement.classList.add('show');
         }
 
         // Функция для перехода на страницу доната Юмани
         function donateYooMoney() {
-            window.location.href = 'https://yoomoney.ru/to/Ваш_номер_кошелька'; // Замените на ваш номер кошелька Юмани
+            window.location.href = 'https://yoomoney.ru/to/410015951659595'; // Ваш номер кошелька Юмани
         }
     </script>
 </body>
