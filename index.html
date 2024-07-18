@@ -43,6 +43,20 @@
         button:hover {
             background-color: #218838;
         }
+        .telegram-link {
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .telegram-link:hover {
+            background-color: #0056b3;
+        }
 
         /* Медиа-запрос для мобильных устройств */
         @media (max-width: 600px) {
@@ -59,26 +73,15 @@
     <div class="calculator">
         <h1>Калькулятор достижения целевой суммы</h1>
         <label for="income_hour">Доход в час:</label>
-        <input type="number" id="income_hour" value="3000000" placeholder="Введите доход в час">
+        <input type="number" id="income_hour" value="3700000" placeholder="Введите доход в час">
         <label for="current_amount">Имеющаяся сумма:</label>
-        <input type="number" id="current_amount" value="22000" placeholder="Введите имеющуюся сумму">
+        <input type="number" id="current_amount" value="229985000" placeholder="Введите имеющуюся сумму">
         <label for="target_amount">Целевая сумма:</label>
         <input type="number" id="target_amount" value="1000000000" placeholder="Введите целевую сумму">
         <button onclick="calculateTime()">Рассчитать время</button>
-        <p id="result" style="font-weight: bold;"></p>
-        <p style="font-size: 18px;">Присоединяйтесь к нашему телеграм каналу: <a href="https://t.me/hamsterkard" target="_blank">https://t.me/hamsterkard</a></p>
+        <p id="result"></p>
+        <a class="telegram-link" href="https://t.me/hamsterkard" target="_blank">Присоединяйтесь к нашему телеграм каналу</a>
     </div>
     <script>
         function calculateTime() {
-            let incomeHour = document.getElementById("income_hour").value;
-            let currentAmount = document.getElementById("current_amount").value;
-            let targetAmount = document.getElementById("target_amount").value;
-            let remainingAmount = targetAmount - currentAmount;
-            let hoursNeeded = remainingAmount / incomeHour;
-            let days = Math.floor(hoursNeeded / 24);
-            let hours = Math.floor(hoursNeeded % 24);
-            document.getElementById("result").innerHTML = `<strong>При доходе ${incomeHour} монет в час и имеющейся сумме ${currentAmount} монет, сумма в ${targetAmount} монет будет достигнута через ${days} дней ${hours} часов.</strong>`;
-        }
-    </script>
-</body>
-</html>
+            let
