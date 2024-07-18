@@ -117,6 +117,20 @@
             color: white;
             font-size: 24px;
         }
+        .donate-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffc107;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .donate-button:hover {
+            background-color: #e0a800;
+        }
     </style>
 </head>
 <body>
@@ -144,6 +158,9 @@
             <!-- Здесь можно добавить дополнительные платформы для шаринга, если нужно -->
             <button class="share-link" onclick="shareViaSystem()">Системное шаринг-меню</button>
         </div>
+
+        <!-- Кнопка "Донат" -->
+        <button class="donate-button" onclick="donateYooMoney()">Поддержать проект</button>
     </div>
     <script>
         function calculateTime() {
@@ -186,6 +203,11 @@
             } else {
                 alert('Извините, ваш браузер не поддерживает системное шаринг-меню.');
             }
+        }
+
+        // Функция для перехода на страницу доната Юмани
+        function donateYooMoney() {
+            window.location.href = 'https://yoomoney.ru/to/Ваш_номер_кошелька'; // Замените на ваш номер кошелька Юмани
         }
     </script>
 </body>
