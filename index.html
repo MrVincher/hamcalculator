@@ -117,28 +117,17 @@
         <p id="result" class="result"></p>
         <p class="telegram-invite">Присоединяйтесь к нашему телеграм каналу:</p>
         <a class="telegram-link" href="https://t.me/hamsterkard" target="_blank">
-            <span class="hamster-emoji">🐹</span> @HamsterKard
+            <span class="hamster-emoji">🐹</span> HamsterKard
         </a>
 
-        <!-- Раздел "Поделиться" -->
-        <div class="share-section">
+        <!-- Кнопка "Поделиться" -->
+        <button class="share-button" onclick="shareApp()">Поделиться</button>
+
+        <!-- Раздел "Поделиться" (скрыт до клика) -->
+        <div class="share-section" id="share-section" style="display: none;">
             <p>Поделитесь калькулятором с друзьями:</p>
             <div class="share-links">
-                <a class="share-link" href="https://vk.com/share.php?url=https://mrvincher.github.io/ham-calculator/" target="_blank">
-                    <img src="vk-icon.png" alt="VKontakte" width="30">
-                </a>
-                <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://mrvincher.github.io/ham-calculator/" target="_blank">
-                    <img src="facebook-icon.png" alt="Facebook" width="30">
-                </a>
-                <a class="share-link" href="https://twitter.com/intent/tweet?url=https://mrvincher.github.io/ham-calculator/&text=Проверьте%20этот%20калькулятор%20достижения%20целевой%20суммы!" target="_blank">
-                    <img src="twitter-icon.png" alt="Twitter" width="30">
-                </a>
-                <a class="share-link" href="whatsapp://send?text=Проверьте%20этот%20калькулятор%20достижения%20целевой%20суммы:%20https://mrvincher.github.io/ham-calculator/" target="_blank">
-                    <img src="whatsapp-icon.png" alt="WhatsApp" width="30">
-                </a>
-                <a class="share-link" href="sms:?body=Проверьте этот калькулятор достижения целевой суммы: https://mrvincher.github.io/ham-calculator/" target="_blank">
-                    <img src="sms-icon.png" alt="SMS" width="30">
-                </a>
+                <a class="share-link" href="#" onclick="shareViaSystem()">Системное шаринг-меню</a>
             </div>
         </div>
     </div>
@@ -164,10 +153,25 @@
             resultElement.classList.add('show'); // Добавляем класс для показа с анимацией
         }
 
-        // Функция для смахивания формы вверх
-        function swipeCalculatorUp() {
-            let calculator = document.querySelector('.calculator');
-            calculator.classList.add('swipe-up');
+        // Функция для отображения раздела "Поделиться"
+        function shareApp() {
+            let shareSection = document.getElementById('share-section');
+            shareSection.style.display = 'block';
+        }
+
+        // Функция для вызова системного шаринг-меню
+        function shareViaSystem() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Калькулятор достижения целевой суммы',
+                    text: 'Проверьте этот калькулятор достижения целевой суммы!',
+                    url: 'https://mrvincher.github.io/ham-calculator/'
+                })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing:', error));
+            } else {
+                alert('Извините, ваш браузер не поддерживает системное шаринг-меню.');
+            }
         }
     </script>
 </body>
