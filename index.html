@@ -99,11 +99,6 @@
             color: #ffc107;
             font-weight: bold;
         }
-        .view-counter {
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -124,54 +119,8 @@
 
         <!-- Кнопка "Донат" -->
         <button class="donate-button" onclick="donateYooMoney()">Поддержать проект</button>
-
-        <!-- Счетчик просмотров -->
-        <p class="view-counter">Уникальные просмотры: <span id="viewCount">0</span></p>
     </div>
     <script>
-        // Функция для получения значения куки по имени
-        function getCookie(name) {
-            let matches = document.cookie.match(new RegExp(
-              "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-
-        // Функция для установки значения куки
-        function setCookie(name, value, options = {}) {
-            options = {
-                path: '/',
-                ...options
-            };
-
-            if (options.expires instanceof Date) {
-                options.expires = options.expires.toUTCString();
-            }
-
-            let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-
-            for (let optionKey in options) {
-                updatedCookie += "; " + optionKey;
-                let optionValue = options[optionKey];
-                if (optionValue !== true) {
-                    updatedCookie += "=" + optionValue;
-                }
-            }
-
-            document.cookie = updatedCookie;
-        }
-
-        // Функция для увеличения счетчика уникальных просмотров
-        function increaseUniqueViewCount() {
-            let viewCount = getCookie('viewCount');
-            viewCount = viewCount ? parseInt(viewCount) + 1 : 1;
-            setCookie('viewCount', viewCount, { expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) }); // Кука на год
-            document.getElementById('viewCount').textContent = viewCount;
-        }
-
-        // Увеличиваем счетчик уникальных просмотров при загрузке страницы
-        increaseUniqueViewCount();
-
         function calculateTime() {
             let incomeHour = document.getElementById("income_hour").value;
             let currentAmount = document.getElementById("current_amount").value;
