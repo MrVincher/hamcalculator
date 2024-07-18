@@ -23,14 +23,18 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             text-align: center;
-            max-width: 80%;
+            max-width: 600px; /* Уменьшил максимальную ширину */
+            width: 100%; /* Чтобы занимал всю доступную ширину */
+            margin: 0 auto; /* Центрирование по горизонтали */
+            box-sizing: border-box; /* Учитываем padding внутри */
         }
         input {
             margin: 10px 0;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            width: 100%;
+            width: calc(100% - 22px); /* Учитываем padding и border */
+            box-sizing: border-box; /* Учитываем padding внутри */
         }
         button {
             padding: 10px 20px;
@@ -39,6 +43,7 @@
             background-color: #28a745;
             color: white;
             cursor: pointer;
+            margin-top: 10px; /* Отступ сверху */
         }
         button:hover {
             background-color: #218838;
@@ -55,6 +60,7 @@
             padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            margin-top: 10px; /* Отступ сверху */
         }
         .telegram-link:hover {
             background-color: #0056b3;
@@ -79,7 +85,7 @@
         <label for="current_amount">Имеющаяся сумма:</label>
         <input type="number" id="current_amount" placeholder="Введите имеющуюся сумму">
         <label for="target_amount">Целевая сумма:</label>
-        <input type="number" id="target_amount" value="1000000000" placeholder="Введите целевую сумму">
+        <input type="number" id="target_amount" placeholder="Введите целевую сумму">
         <button onclick="calculateTime()">Рассчитать время</button>
         <p id="result"></p>
         <p class="telegram-invite">Присоединяйтесь к нашему телеграм каналу:</p>
