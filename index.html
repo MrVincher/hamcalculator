@@ -65,6 +65,13 @@
         .telegram-link:hover {
             background-color: #0056b3;
         }
+        #result {
+            opacity: 0; /* Скрыть результат по умолчанию */
+            transition: opacity 0.5s ease; /* Плавное появление */
+        }
+        #result.show {
+            opacity: 1; /* Показать результат с анимацией */
+        }
 
         /* Медиа-запрос для мобильных устройств */
         @media (max-width: 600px) {
@@ -87,7 +94,7 @@
         <label for="target_amount">Целевая сумма:</label>
         <input type="number" id="target_amount" placeholder="Введите целевую сумму">
         <button onclick="calculateTime()">Рассчитать время</button>
-        <p id="result"></p>
+        <p id="result" class="result"></p>
         <p class="telegram-invite">Присоединяйтесь к нашему телеграм каналу:</p>
         <a class="telegram-link" href="https://t.me/hamsterkard" target="_blank">HamsterKard</a>
     </div>
@@ -108,7 +115,9 @@
                 resultText = 'Пожалуйста, введите доход в час и имеющуюся сумму для расчета.';
             }
 
-            document.getElementById("result").innerHTML = `<strong>${resultText}</strong>`;
+            let resultElement = document.getElementById("result");
+            resultElement.innerHTML = `<strong>${resultText}</strong>`;
+            resultElement.classList.add('show'); // Добавляем класс для показа с анимацией
         }
     </script>
 </body>
