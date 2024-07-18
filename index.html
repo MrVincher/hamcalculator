@@ -90,6 +90,7 @@
         .share-section {
             margin-top: 20px;
             text-align: center;
+            display: none; /* Скрыт по умолчанию */
         }
         .share-button {
             display: inline-block;
@@ -104,9 +105,6 @@
         }
         .share-button:hover {
             background-color: #0056b3;
-        }
-        .share-section {
-            display: none; /* Скрыт по умолчанию */
         }
         .share-links {
             display: flex;
@@ -140,12 +138,11 @@
         <!-- Кнопка "Поделиться" -->
         <button class="share-button" onclick="shareApp()">Поделиться</button>
 
-        <!-- Раздел "Поделиться" (скрыт до клика) -->
+        <!-- Раздел "Поделиться" -->
         <div class="share-section" id="share-section">
             <p>Поделитесь калькулятором с друзьями:</p>
-            <div class="share-links">
-                <a class="share-link" href="#" onclick="shareViaSystem()">Системное шаринг-меню</a>
-            </div>
+            <!-- Здесь можно добавить дополнительные платформы для шаринга, если нужно -->
+            <button class="share-link" onclick="shareViaSystem()">Системное шаринг-меню</button>
         </div>
     </div>
     <script>
