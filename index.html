@@ -27,6 +27,8 @@
             width: 100%; /* Чтобы занимал всю доступную ширину */
             margin: 0 auto; /* Центрирование по горизонтали */
             box-sizing: border-box; /* Учитываем padding внутри */
+            position: relative; /* Добавил позиционирование для смахивания */
+            z-index: 1; /* Установил z-index для наложения */
         }
         input {
             margin: 10px 0;
@@ -65,22 +67,40 @@
         .telegram-link:hover {
             background-color: #0056b3;
         }
-        #result {
-            opacity: 0; /* Скрыть результат по умолчанию */
-            transition: opacity 0.5s ease; /* Плавное появление */
-        }
-        #result.show {
-            opacity: 1; /* Показать результат с анимацией */
+        .hamster-emoji {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
         }
 
-        /* Медиа-запрос для мобильных устройств */
-        @media (max-width: 600px) {
-            .calculator {
-                padding: 10px;
+        /* Анимация для скрытия формы */
+        @keyframes swipeUp {
+            from {
+                transform: translateY(0);
             }
-            input, button {
-                width: 100%;
+            to {
+                transform: translateY(-100%);
             }
+        }
+        .swipe-up {
+            animation: swipeUp 0.5s forwards;
+        }
+
+        /* Стили для раздела "Поделиться" */
+        .share-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .share-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .share-link {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -96,7 +116,31 @@
         <button onclick="calculateTime()">Рассчитать время</button>
         <p id="result" class="result"></p>
         <p class="telegram-invite">Присоединяйтесь к нашему телеграм каналу:</p>
-        <a class="telegram-link" href="https://t.me/hamsterkard" target="_blank">HamsterKard</a>
+        <a class="telegram-link" href="https://t.me/hamsterkard" target="_blank">
+            <span class="hamster-emoji">🐹</span> @HamsterKard
+        </a>
+
+        <!-- Раздел "Поделиться" -->
+        <div class="share-section">
+            <p>Поделитесь калькулятором с друзьями:</p>
+            <div class="share-links">
+                <a class="share-link" href="https://vk.com/share.php?url=https://mrvincher.github.io/ham-calculator/" target="_blank">
+                    <img src="vk-icon.png" alt="VKontakte" width="30">
+                </a>
+                <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://mrvincher.github.io/ham-calculator/" target="_blank">
+                    <img src="facebook-icon.png" alt="Facebook" width="30">
+                </a>
+                <a class="share-link" href="https://twitter.com/intent/tweet?url=https://mrvincher.github.io/ham-calculator/&text=Проверьте%20этот%20калькулятор%20достижения%20целевой%20суммы!" target="_blank">
+                    <img src="twitter-icon.png" alt="Twitter" width="30">
+                </a>
+                <a class="share-link" href="whatsapp://send?text=Проверьте%20этот%20калькулятор%20достижения%20целевой%20суммы:%20https://mrvincher.github.io/ham-calculator/" target="_blank">
+                    <img src="whatsapp-icon.png" alt="WhatsApp" width="30">
+                </a>
+                <a class="share-link" href="sms:?body=Проверьте этот калькулятор достижения целевой суммы: https://mrvincher.github.io/ham-calculator/" target="_blank">
+                    <img src="sms-icon.png" alt="SMS" width="30">
+                </a>
+            </div>
+        </div>
     </div>
     <script>
         function calculateTime() {
@@ -118,6 +162,12 @@
             let resultElement = document.getElementById("result");
             resultElement.innerHTML = `<strong>${resultText}</strong>`;
             resultElement.classList.add('show'); // Добавляем класс для показа с анимацией
+        }
+
+        // Функция для смахивания формы вверх
+        function swipeCalculatorUp() {
+            let calculator = document.querySelector('.calculator');
+            calculator.classList.add('swipe-up');
         }
     </script>
 </body>
